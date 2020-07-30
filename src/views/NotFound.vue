@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <t-card class="child-view">
     <h1>Page Not Found</h1>
     <h2>
       Go to
@@ -7,7 +7,7 @@
         Login
       </router-link>
     </h2>
-  </section>
+  </t-card>
 </template>
 
 <script>

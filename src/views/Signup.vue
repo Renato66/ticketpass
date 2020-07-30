@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <t-card class="child-view">
     <h1>Signup</h1>
-  </section>
+  </t-card>
 </template>
 
 <script>
