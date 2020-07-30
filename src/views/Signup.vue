@@ -1,9 +1,11 @@
 <template>
-  <h1>Login</h1>
+  <section>
+    <h1>Signup</h1>
+  </section>
 </template>
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Signup'
 }
 </script>
