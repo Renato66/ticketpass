@@ -8,7 +8,7 @@
 
 # Tickectpass test
 
-Its build using [vite](github.com/vitejs/vite) and [vue 3](https://github.com/vuejs/vue-next) to do [this](./design) design
+Its build using [vite](https://github.com/vitejs/vite) and [vue 3](https://github.com/vuejs/vue-next) to do [this](./design.pdf) design
 The site is live at [https://ticketpass-test.netlify.app](https://ticketpass-test.netlify.app)
 
 # How to
@@ -22,7 +22,7 @@ yarn install
 ## Run
 
 ### Compiles and hot-reloads for development
-You can look at [localhost:8080](http://localhost:8080) to see the app
+You can look at [localhost:3000](http://localhost:3000) to see the app
 ```
 yarn dev
 ```
