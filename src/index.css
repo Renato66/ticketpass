@@ -1,14 +1,21 @@
+body {
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .child-view {
-  position: absolute;
   transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
 }
 .slide-left-enter-from,
