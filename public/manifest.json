@@ -1,0 +1,11 @@
+{
+  "name": "ticketpass",
+  "short_name": "ticketpass",
+  "description": "The First Ethical Ticketing Platform",
+  "icons": [],
+  "start_url": "/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "transparent",
+  "lang": "en"
+  }
