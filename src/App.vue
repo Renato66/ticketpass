@@ -21,6 +21,7 @@ main {
   height: 100vh;
 }
 .t-link {
+  cursor: pointer;
   text-decoration: none;
   color: #737373;
   &:focus,
