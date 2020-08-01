@@ -1,20 +1,34 @@
 <template>
   <t-card class="child-view">
-    <h1>Dashboard</h1>
-    <h2>
-      <router-link class="t-link" :to="{ name: 'Login' }">
+    <h1>Welcome, {{ firsName }}</h1>
+    <div class="text-center">
+      <a class="t-link" @click="logoutUser">
         Logout
-      </router-link>
-    </h2>
+      </a>
+    </div>
   </t-card>
 </template>
 
 <script>
+import { logout, getUser } from "../service/auth.js";
+
 export default {
   name: 'Dashboard',
+  data () {
+    return {
+      firsName: ''
+    }
+  },
   methods: {
-    logout () {
-      this.$router.go({ name: 'Login' })
+    logoutUser () {
+      this.$router.push({ name: 'Login' })
+      logout()
+    }
+  },
+  mounted () {
+    const user = getUser()
+    if (user) {
+      this.firsName = user.name.split(' ')[0]
     }
   }
 }

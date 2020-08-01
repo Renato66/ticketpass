@@ -38,3 +38,12 @@ export const singup = async ({name, username, password}) => {
     }
   }
 }
+
+export const getUser = () => {
+  return JSON.parse(localStorage.getItem('user'))
+}
+
+export const logout = () => {
+  localStorage.removeItem('auth_token')
+  localStorage.removeItem('user')
+}
