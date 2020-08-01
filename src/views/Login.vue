@@ -76,7 +76,7 @@ export default {
       } catch (error) {
         Toastify({
           text: error.message,
-          duration: 30000,
+          duration: 3000,
           gravity: "top",
           position: "right",
           backgroundColor: "#ff5f6d"
