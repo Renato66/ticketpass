@@ -15,7 +15,7 @@ export const authentication = async ({username, password}) => {
     })
   )
 }
-export const singup = async ({name, username, password}) => {
+export const singUp = async ({name, username, password}) => {
   await new Promise(resolve => setTimeout(resolve, 1000))
   // TODO: call an API to verify username and password
   // TODO: validate all fields in backend 

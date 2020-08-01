@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { getUser } from './service/auth.js'
 const Dashboard= () => import('./views/Dashboard.vue')
 const Login = () => import('./views/Login.vue')
-const Signup = () => import('./views/Signup.vue')
+const SignUp = () => import('./views/SignUp.vue')
 const NotFound = () => import('./views/NotFound.vue')
 
 export const router = createRouter({
@@ -22,9 +22,9 @@ export const router = createRouter({
       name: 'Dashboard'
     },
     {
-      path: '/signup',
-      component: Signup,
-      name: 'Signup'
+      path: '/sign-up',
+      component: SignUp,
+      name: 'SignUp'
     },
     { 
       path: '/:data(.*)',

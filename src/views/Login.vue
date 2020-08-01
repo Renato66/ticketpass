@@ -14,7 +14,6 @@
           id="username"
           name="username"
           label="Email"
-          placeholder="example@ticketpass.com"
           :erros="usernameErros"
           @focus="usernameClearErros"
         />
@@ -43,7 +42,7 @@
         </t-btn>
       </div>
       <div class="text-center">
-        <router-link to="/signup" class="t-link">Create an account</router-link>
+        <router-link :to="{ name: 'SignUp' }" class="t-link">Create an account</router-link>
       </div>
     </form>
   </t-card>
@@ -54,7 +53,7 @@ import { useLoading } from "../functions/useLoading.js";
 import { useValidator } from "../functions/useValidator.js";
 import { validateEmail } from "../helpers/validateEmail.js";
 import { validatePassword } from "../helpers/validatePassword.js";
-import { authentication, singup } from "../service/auth.js";
+import { authentication } from "../service/auth.js";
 import getColor from "../helpers/getColor.js";
 import Toastify from 'toastify-js'
 
@@ -147,7 +146,7 @@ export default {
       margin: 20px 0px;
     }
     &__button {
-      margin: 5px 0px;
+      margin: 5px 0px 15px 0px;
       text-align: center;
     }
   }
