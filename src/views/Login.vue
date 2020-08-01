@@ -57,6 +57,7 @@ import { useValidator } from "../functions/useValidator.js";
 import { validateEmail } from "../helpers/validateEmail.js";
 import { validatePassword } from "../helpers/validatePassword.js";
 import { authentication, singup } from "../service/auth.js";
+import getColor from "../helpers/getColor.js";
 import Toastify from 'toastify-js'
 
 export default {
@@ -79,7 +80,7 @@ export default {
           duration: 3000,
           gravity: "top",
           position: "right",
-          backgroundColor: "#ff5f6d"
+          backgroundColor: getColor('error')
         }).showToast();
       } finally {
         this.toggleLoginIn();
