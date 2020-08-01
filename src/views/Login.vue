@@ -33,13 +33,14 @@
         </t-input-text>
       </div>
       <div class="t-login-form__button">
-        <button tabindex="3" id="login-button">submit</button>
+        <button tabindex="3" id="login-button" :disabled="isLoginIn">submit</button>
       </div>
     </form>
   </t-card>
 </template>
 
 <script>
+import { useLoading } from '../functions/useLoading.js'
 export default {
   name: "Login",
   data() {
@@ -49,10 +50,26 @@ export default {
     };
   },
   methods: {
-    login() {
+    async login() {
+      if (this.isLoginIn) return
+      try {
+        this.toggleLoginIn()
+        await new Promise(resolve => setTimeout(resolve, 1000))
+      } catch (error) {
+        console.log('error', error)
+      } finally {
+        this.toggleLoginIn()
+      }
       console.log("login");
     },
   },
+  setup () {
+    const { isLoading: isLoginIn, toggleLoading: toggleLoginIn } = useLoading(false)
+    return {
+      isLoginIn,
+      toggleLoginIn
+    }
+  }
 };
 </script>
 <style lang="scss">
