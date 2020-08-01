@@ -9,7 +9,7 @@
     <form id="login" @submit.prevent="login" class="t-login-form">
       <div class="t-login-form__input">
         <t-input-text
-          v-model="username"
+          v-model.trim="username"
           type="email"
           id="username"
           name="username"
