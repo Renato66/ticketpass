@@ -11,8 +11,7 @@
       :name="name"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
-      :placeholder="placeholder"
-      :disabled="disabled"
+      v-bind="$attrs"
     >
   </div>
 </template>
@@ -20,16 +19,13 @@
 <script>
 export default {
   name: 'TInput',
+  inheritAttrs: false,
   props: {
     modelValue: {
       type: String
     },
     label: {
       type: String
-    },
-    disabled: {
-      type: Boolean,
-      default: false
     },
     name: {
       type: String,
@@ -40,10 +36,6 @@ export default {
     type: {
       type: String,
       default: 'text'
-    },
-    placeholder: {
-      type: String,
-      default: ''
     }
   }
 }
@@ -58,6 +50,7 @@ export default {
     font-weight: 500;
   }
   &__input {
+    width: calc(100% - 16px);
     padding: 10px 8px;
     border-radius: 4px;
     font-weight: 500;
