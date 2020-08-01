@@ -9,20 +9,11 @@ const checkDotChar = (email) => {
 }
 
 const rules = [
-  (v) => v === '' || 'The field is empty',
+  (v) => v !== '' || 'Empty field',
   (v) => checkAtChar(v) || 'Missing "@" char',
   (v) => checkDotChar(v) || 'Missing "." char',
 ]
 
-const validateEmail = (value) => {
-  return validateRules(value, rules).length === 0
-}
-
-const hasEmailErros = (value) => {
+export const validateEmail = (value) => {
   return validateRules(value, rules)
-}
-
-export default {
-  validateEmail,
-  hasEmailErros
 }

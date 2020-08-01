@@ -13,20 +13,12 @@ const validateAlphabetic = (password) => {
 }
 
 const rules = [
+  (v) => v !== '' || 'Empty field',
   v => validateLength(v) || 'Password too short',
   v => validateNumeric(v) || 'Missing a numeric char',
   v => validateAlphabetic(v) || 'Missing a alphabetic char'
 ]
 
-const validatePassword = (value) => {
-  return validateRules(value, rules).length === 0
-}
-
-const hasPasswordErros = (value) => {
+export const validatePassword = (value) => {
   return validateRules(value, rules)
-}
-
-export default {
-  validatePassword,
-  hasPasswordErros
 }

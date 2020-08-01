@@ -1,7 +1,10 @@
 <template>
   <t-card class="child-view t-login">
     <div class="t-login__logo">
-      <img src="https://ticketpass.org/_nuxt/dist/948663e9104105656d0c7334673f7c7f.svg" alt="ticketpass logo" />
+      <img
+        src="https://ticketpass.org/_nuxt/dist/948663e9104105656d0c7334673f7c7f.svg"
+        alt="ticketpass logo"
+      />
     </div>
     <form id="login" @submit.prevent="login" class="t-login-form">
       <div class="t-login-form__input">
@@ -13,6 +16,8 @@
           label="Email"
           placeholder="example@ticketpass.com"
           tabindex="1"
+          :erros="usernameErros"
+          @focus="usernameClearErros"
         />
       </div>
       <div class="t-login-form__input">
@@ -23,6 +28,8 @@
           name="password"
           placeholder
           tabindex="2"
+          :erros="passwordErros"
+          @focus="passwordClearErros"
         >
           <template v-slot:label>
             <div class="space-between">
@@ -40,38 +47,76 @@
 </template>
 
 <script>
-import { useLoading } from '../functions/useLoading.js'
+import { useLoading } from "../functions/useLoading.js";
+import { useValidator } from "../functions/useValidator.js";
+import { validateEmail } from "../helpers/validateEmail.js";
+import { validatePassword } from "../helpers/validatePassword.js";
+
 export default {
   name: "Login",
-  data() {
-    return {
-      username: "",
-      password: "",
-    };
-  },
   methods: {
     async login() {
-      if (this.isLoginIn) return
+      if (this.isLoginIn) return;
+      if (!this.usernameValidateErros()) return;
+      if (!this.passwordValidateErros()) return;
       try {
-        this.toggleLoginIn()
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        this.toggleLoginIn();
+        console.log({
+          username: this.username,
+          password: this.password
+        })
       } catch (error) {
-        console.log('error', error)
+        console.log("error", error);
       } finally {
-        this.toggleLoginIn()
+        this.toggleLoginIn();
       }
       console.log("login");
     },
   },
-  setup () {
-    const { isLoading: isLoginIn, toggleLoading: toggleLoginIn } = useLoading(false)
+  setup() {
+    const { isLoading: isLoginIn, toggleLoading: toggleLoginIn } = useLoading(
+      false
+    );
+
+    const {
+      input: username,
+      erros: usernameErros,
+      isValid: usernameIsValid,
+      clearErros: usernameClearErros,
+      validateErros: usernameValidateErros,
+    } = useValidator({
+      input: "",
+      validator: validateEmail,
+    });
+    const {
+      input: password,
+      erros: passwordErros,
+      isValid: passwordIsValid,
+      clearErros: passwordClearErros,
+      validateErros: passwordValidateErros,
+    } = useValidator({
+      input: "",
+      validator: validatePassword,
+    });
+
     return {
+      username,
+      usernameErros,
+      usernameIsValid,
+      usernameClearErros,
+      usernameValidateErros,
+      password,
+      passwordErros,
+      passwordIsValid,
+      passwordClearErros,
+      passwordValidateErros,
       isLoginIn,
-      toggleLoginIn
-    }
-  }
+      toggleLoginIn,
+    };
+  },
 };
 </script>
+
 <style lang="scss">
 .t-login {
   width: 300px;
