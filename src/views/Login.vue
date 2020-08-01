@@ -15,7 +15,6 @@
           name="username"
           label="Email"
           placeholder="example@ticketpass.com"
-          tabindex="1"
           :erros="usernameErros"
           @focus="usernameClearErros"
         />
@@ -27,25 +26,24 @@
           id="password"
           name="password"
           placeholder
-          tabindex="2"
           :erros="passwordErros"
           @focus="passwordClearErros"
         >
           <template v-slot:label>
             <div class="space-between">
               <span>Password</span>
-              <router-link to="/not-found" class="t-link" tabindex="4">Forgot password?</router-link>
+              <router-link to="/not-found" class="t-link" tabindex="0">Forgot password?</router-link>
             </div>
           </template>
         </t-input-text>
       </div>
       <div class="t-login-form__button">
-        <t-btn :loading="isLoginIn" tabindex="3">
+        <t-btn :loading="isLoginIn">
           Login
         </t-btn>
       </div>
       <div class="text-center">
-        <router-link to="/signup" class="t-link" tabindex="5">Create an account</router-link>
+        <router-link to="/signup" class="t-link">Create an account</router-link>
       </div>
     </form>
   </t-card>
