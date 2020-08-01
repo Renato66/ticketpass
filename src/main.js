@@ -3,6 +3,7 @@ import { router } from './router'
 import App from './App.vue'
 import registerComponents from './plugins/core-components.js'
 import './index.css'
+import "toastify-js/src/toastify.css"
 
 const app = createApp(App)
 app.use(router)
