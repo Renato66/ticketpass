@@ -1,5 +1,6 @@
 :root {
-  --color-primary: #239d5b
+  --color-primary: #239d5b;
+  --color-error: #ff5f6d;
 }
 body {
   font-family: Avenir, Helvetica, Arial, sans-serif;

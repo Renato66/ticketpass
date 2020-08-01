@@ -84,7 +84,7 @@ export default {
       background: #eaeaea;
     }
     &--error {
-      border: 1px solid red;
+      border: 1px solid var(--color-error);
     }
   }
 }
