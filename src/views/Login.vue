@@ -34,15 +34,18 @@
           <template v-slot:label>
             <div class="space-between">
               <span>Password</span>
-              <router-link to="/not-found" class="forgot-password" tabindex="4">Forgot password?</router-link>
+              <router-link to="/not-found" class="t-link" tabindex="4">Forgot password?</router-link>
             </div>
           </template>
         </t-input-text>
       </div>
       <div class="t-login-form__button">
-        <t-btn :loading="true" tabindex="3">
+        <t-btn :loading="isLoginIn" tabindex="3">
           Login
         </t-btn>
+      </div>
+      <div class="text-center">
+        <router-link to="/signup" class="t-link" tabindex="5">Create an account</router-link>
       </div>
     </form>
   </t-card>
@@ -63,7 +66,7 @@ export default {
       if (!this.passwordValidateErros()) return;
       try {
         this.toggleLoginIn();
-        console.log({
+        await this.authentication({
           username: this.username,
           password: this.password
         })
@@ -74,6 +77,10 @@ export default {
       }
       console.log("login");
     },
+    async authentication (user) {
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      console.log(user)
+    }
   },
   setup() {
     const { isLoading: isLoginIn, toggleLoading: toggleLoginIn } = useLoading(
@@ -130,30 +137,16 @@ export default {
       width: 200px;
     }
   }
-}
-.t-login-form {
-  margin: auto;
-  width: 250px;
-  &__input {
-    margin: 20px 0px;
-  }
-  &__button {
-    margin: 5px 0px;
-    text-align: center;
-  }
-}
-.space-between {
-  display: flex;
-  justify-content: space-between;
-}
-.forgot-password {
-  text-decoration: none;
-  color: #737373;
-  &:focus,
-  &:hover{
-    outline: none;
-    color: var(--color-primary)
+  .t-login-form {
+    margin: auto;
+    width: 250px;
+    &__input {
+      margin: 20px 0px;
+    }
+    &__button {
+      margin: 5px 0px;
+      text-align: center;
+    }
   }
 }
-
 </style>

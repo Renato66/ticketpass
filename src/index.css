@@ -1,24 +1,27 @@
 :root {
   --color-primary: #239d5b
 }
-
 body {
   margin: 0;
 }
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-
 .aligner {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+.text-center {
+  text-align: center;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
 .child-view {
   transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
 }
