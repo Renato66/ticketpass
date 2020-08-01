@@ -56,6 +56,7 @@ import { useLoading } from "../functions/useLoading.js";
 import { useValidator } from "../functions/useValidator.js";
 import { validateEmail } from "../helpers/validateEmail.js";
 import { validatePassword } from "../helpers/validatePassword.js";
+import { authentication, singup } from "../service/auth.js";
 
 export default {
   name: "Login",
@@ -66,7 +67,7 @@ export default {
       if (!this.passwordValidateErros()) return;
       try {
         this.toggleLoginIn();
-        await this.authentication({
+        await authentication({
           username: this.username,
           password: this.password
         })
@@ -77,10 +78,6 @@ export default {
         this.toggleLoginIn();
       }
       console.log("login");
-    },
-    async authentication (user) {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      console.log(user)
     }
   },
   setup() {
