@@ -7,12 +7,21 @@
     </label>
     <input
       class="t-input__input"
+      :class="{'t-input__input--error': erros.length > 0}"
       :type="type"
       :name="name"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       v-bind="$attrs"
     >
+    <div class="t-helper" v-if="erros.length > 0">
+      ?
+      <ul class="t-helper__message">
+        <li v-for="(message, index) in erros" :key="index">
+          {{ message }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -36,6 +45,12 @@ export default {
     type: {
       type: String,
       default: 'text'
+    },
+    erros: {
+      type: Array,
+      default: () => {
+        return []
+      }
     }
   }
 }
@@ -43,6 +58,7 @@ export default {
 
 <style lang="scss">
 .t-input {
+  position: relative;
   &__label {
     padding: 0px 0px 8px 0px;
     display: block;
@@ -62,6 +78,39 @@ export default {
     }
     &[disabled] {
       background: #eaeaea;
+    }
+    &--error {
+      border: 1px solid red;
+    }
+  }
+}
+.t-helper {
+  position: absolute;
+  right: 1px;
+  bottom: 3px;
+  height: 16px;
+  width: 16px;
+  font-size: 12px;
+  background: #b6b7b369;
+  border-radius: 100%;
+  text-align: center;
+  color: #7b7b7b;
+  cursor: help;
+  &__message{
+    display: none;
+    position: absolute;
+    left: -150px;
+    right: 0;
+    max-width: 150px;
+    background: #000000ba;
+    border-radius: 8px;
+    z-index: 1;
+    color: white;
+    padding: 8px 10px;
+    margin-top: 6px;
+    font-size: 14px;
+    :hover > & {
+      display: block
     }
   }
 }
