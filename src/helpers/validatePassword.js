@@ -15,8 +15,8 @@ const validateAlphabetic = (password) => {
 const rules = [
   (v) => v !== '' || 'Empty field',
   v => validateLength(v) || 'Password too short',
-  v => validateNumeric(v) || 'Missing a numeric char',
-  v => validateAlphabetic(v) || 'Missing a alphabetic char'
+  v => validateNumeric(v) || 'Missing a numeric character',
+  v => validateAlphabetic(v) || 'Missing a alphabetic character'
 ]
 
 export const validatePassword = (value) => {
