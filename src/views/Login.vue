@@ -81,11 +81,9 @@ export default {
           position: "right",
           backgroundColor: "#ff5f6d"
         }).showToast();
-        console.log("error", error);
       } finally {
         this.toggleLoginIn();
       }
-      console.log("login");
     }
   },
   setup() {
