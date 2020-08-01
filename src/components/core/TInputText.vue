@@ -72,6 +72,10 @@ export default {
     font-weight: 500;
     font-size: 1.1em;
     border: 1px solid #b6b7b3;
+    &:focus{
+      outline: none;
+      border-color: var(--color-primary)
+    }
     &[type="password"] {
       color: #636161;
       letter-spacing: 6px;

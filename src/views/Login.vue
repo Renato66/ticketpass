@@ -40,7 +40,9 @@
         </t-input-text>
       </div>
       <div class="t-login-form__button">
-        <button tabindex="3" id="login-button" :disabled="isLoginIn">submit</button>
+        <t-btn :loading="true" tabindex="3">
+          Login
+        </t-btn>
       </div>
     </form>
   </t-card>
@@ -147,5 +149,11 @@ export default {
 .forgot-password {
   text-decoration: none;
   color: #737373;
+  &:focus,
+  &:hover{
+    outline: none;
+    color: var(--color-primary)
+  }
 }
+
 </style>
