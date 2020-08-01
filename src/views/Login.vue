@@ -57,6 +57,8 @@ import { useValidator } from "../functions/useValidator.js";
 import { validateEmail } from "../helpers/validateEmail.js";
 import { validatePassword } from "../helpers/validatePassword.js";
 import { authentication, singup } from "../service/auth.js";
+import getColor from "../helpers/getColor.js";
+import Toastify from 'toastify-js'
 
 export default {
   name: "Login",
@@ -73,11 +75,16 @@ export default {
         })
         this.$router.push({ name: 'Dashboard' })
       } catch (error) {
-        console.log("error", error);
+        Toastify({
+          text: error.message,
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          backgroundColor: getColor('error')
+        }).showToast();
       } finally {
         this.toggleLoginIn();
       }
-      console.log("login");
     }
   },
   setup() {

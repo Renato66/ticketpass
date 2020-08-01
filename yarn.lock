@@ -1913,6 +1913,11 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+toastify-js@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/toastify-js/-/toastify-js-1.9.0.tgz#726963ce850d914ee836951b5e79bdf641fe979e"
+  integrity sha512-v+Y/EUtRNdwtORfIF4oJIZ2BJWTT27Y/83ccVwJLI+wjz+dsyrjdWzC6awhfLWu8KOnfky/ac5tB1sz60fy6sQ==
+
 toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"

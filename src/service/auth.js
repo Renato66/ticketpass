@@ -5,7 +5,7 @@ export const authentication = async ({username, password}) => {
   const users = JSON.parse(localStorage.getItem('users')) || []
   const user = users.find(elem => elem.username === username)
   if (!user) throw new Error('No user found')
-  if (user.password !== password)  throw new Error('No user found')
+  if (user.password !== password)  throw new Error('Wrong password')
   
   const token = Math.random().toString(36).substr(2, 9);
   localStorage.setItem('auth_token', token)
