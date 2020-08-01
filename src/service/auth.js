@@ -15,3 +15,26 @@ export const authentication = async ({username, password}) => {
     })
   )
 }
+export const singup = async ({name, username, password}) => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  // TODO: call an API to verify username and password
+  // TODO: validate all fields in backend 
+  // WARN: demo purpose only
+  const id = Math.random().toString(36).substr(2, 9);
+  const users = JSON.parse(localStorage.getItem('users')) || []
+  const user = users.find(elem => elem.username === username)
+  if (user) throw new Error('Email already registered')
+  users.push({
+    id,
+    name,
+    username,
+    password
+  })
+  localStorage.setItem('users', JSON.stringify(users))
+  return {
+    user: {
+      id,
+      name
+    }
+  }
+}
