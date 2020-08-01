@@ -70,6 +70,7 @@ export default {
           username: this.username,
           password: this.password
         })
+        this.$router.push({ name: 'Dashboard' })
       } catch (error) {
         console.log("error", error);
       } finally {
