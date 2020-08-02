@@ -2,8 +2,33 @@
   "name": "ticketpass",
   "short_name": "ticketpass",
   "description": "The First Ethical Ticketing Platform",
-  "icons": [],
-  "start_url": "/?standalone=true",
+  "icons": [
+    {
+        "src": "/img/icons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    },
+    {
+        "src": "/img/icons/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "My tickets",
+      "short_name": "Tickets",
+      "url": "/tickets?utm_source=homescreen",
+      "icons": []
+    },
+    {
+      "name": "My events",
+      "short_name": "Events",
+      "url": "/events?utm_source=homescreen",
+      "icons": []
+    }
+  ],
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "transparent",
