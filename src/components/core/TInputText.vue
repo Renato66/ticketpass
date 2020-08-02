@@ -26,31 +26,18 @@
 </template>
 
 <script>
+import inputPropsMixin from '../mixins/inputPropsMixin'
 export default {
   name: 'TInput',
   inheritAttrs: false,
   props: {
+    ...inputPropsMixin,
     modelValue: {
       type: String
-    },
-    label: {
-      type: String
-    },
-    name: {
-      type: String,
-      default: () => {
-        return 'input-' + Math.floor(Math.random() * 100)
-      }
     },
     type: {
       type: String,
       default: 'text'
-    },
-    erros: {
-      type: Array,
-      default: () => {
-        return []
-      }
     }
   }
 }
