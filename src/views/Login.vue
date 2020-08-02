@@ -31,7 +31,7 @@
           <template v-slot:label>
             <div class="space-between">
               <span>Password</span>
-              <router-link to="/not-found" class="t-link" tabindex="0">Forgot password?</router-link>
+              <ModalForgotPassword />
             </div>
           </template>
         </t-input-text>
@@ -56,9 +56,13 @@ import { validatePassword } from "../helpers/validatePassword.js";
 import { authentication } from "../service/auth.js";
 import getColor from "../helpers/getColor.js";
 import Toastify from 'toastify-js'
+import ModalForgotPassword from '../components/ModalForgotPassword.vue'
 
 export default {
   name: "Login",
+  components: {
+    ModalForgotPassword
+  },
   methods: {
     async login() {
       if (this.isLoginIn) return;

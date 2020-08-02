@@ -47,3 +47,13 @@ export const logout = () => {
   localStorage.removeItem('auth_token')
   localStorage.removeItem('user')
 }
+
+export const forgotPassword = async (username) => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
+  // TODO: call an API to verify email
+  // WARN: demo purpose only
+  const users = JSON.parse(localStorage.getItem('users')) || []
+  const user = users.find(elem => elem.username === username)
+  if (!user) throw new Error('Email not found')
+  return true
+}
