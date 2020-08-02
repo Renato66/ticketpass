@@ -5,7 +5,6 @@ import registerComponents from './plugins/core-components.js'
 import importCss from './plugins/importCss.js'
 importCss('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css')
 import './index.css'
-import './plugins/pwabuilder-sw-register.js'
 
 const app = createApp(App)
 app.use(router)
