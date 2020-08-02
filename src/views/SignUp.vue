@@ -1,13 +1,13 @@
 <template>
-  <t-card class="child-view t-sing-up">
-    <div class="t-sing-up__logo">
+  <t-card class="child-view t-sign-up">
+    <div class="t-sign-up__logo">
       <img
         src="https://ticketpass.org/_nuxt/dist/948663e9104105656d0c7334673f7c7f.svg"
         alt="ticketpass logo"
       />
-      <h1 class="t-sing-up__call">Create an accout to continue</h1>
+      <h1 class="t-sign-up__call">Create an accout to continue</h1>
     </div>
-    <form id="sing-up" @submit.prevent="singUp" class="t-sing-up-form">
+    <form id="sign-up" @submit.prevent="signUp" class="t-sign-up-form">
       <div>
         <t-input-text
           v-model.trim="name"
@@ -20,7 +20,7 @@
           @focus="nameClearErros"
         />
       </div>
-      <div class="t-sing-up-form__input">
+      <div class="t-sign-up-form__input">
         <t-input-text
           v-model.trim="username"
           type="email"
@@ -32,7 +32,7 @@
           @focus="usernameClearErros"
         />
       </div>
-      <div class="t-sing-up-form__input">
+      <div class="t-sign-up-form__input">
         <t-input-text
           v-model="password"
           type="password"
@@ -45,9 +45,14 @@
         >
         </t-input-text>
       </div>
-      <div class="t-sing-up-form__button">
+      <div class="t-sign-up-form__checkbox">
+        <t-checkbox v-model="agreeWithTerms" name="terms" >
+          I accept <a class="primary--text t-link">terms</a> and <a class="primary--text t-link">conditions</a>
+        </t-checkbox>
+      </div>
+      <div class="t-sign-up-form__button">
         <t-btn :loading="isSigningUp">
-          Sing up
+          Sign up
         </t-btn>
       </div>
       <div class="text-center">
@@ -65,21 +70,26 @@ import { useValidator } from "../functions/useValidator.js";
 import { validateName } from "../helpers/validateName.js";
 import { validateEmail } from "../helpers/validateEmail.js";
 import { validatePassword } from "../helpers/validatePassword.js";
-import { authentication, singUp } from "../service/auth.js";
+import { authentication, signUp } from "../service/auth.js";
 import getColor from "../helpers/getColor.js";
 import Toastify from 'toastify-js'
 
 export default {
   name: "Signup",
+  data () {
+    return {
+      agreeWithTerms: false
+    }
+  },
   methods: {
-    async singUp() {
+    async signUp() {
       if (this.isSigningUp) return;
       if (!this.nameValidateErros()) return;
       if (!this.usernameValidateErros()) return;
       if (!this.passwordValidateErros()) return;
       try {
         this.toggleSignup();
-        await singUp({
+        await signUp({
           name: this.name,
           username: this.username,
           password: this.password
@@ -169,7 +179,7 @@ export default {
 </script>
 
 <style lang="scss">
-.t-sing-up {
+.t-sign-up {
   width: 300px;
   padding: 30px 15px;
   &__call {
@@ -184,10 +194,13 @@ export default {
       width: 200px;
     }
   }
-  .t-sing-up-form {
+  .t-sign-up-form {
     margin: auto;
     width: 250px;
     &__input {
+      margin: 20px 0px;
+    }
+    &__checkbox {
       margin: 20px 0px;
     }
     &__button {
