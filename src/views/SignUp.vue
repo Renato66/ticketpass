@@ -42,25 +42,22 @@
           label="Password"
           :erros="passwordErros"
           @focus="passwordClearErros"
-        >
-        </t-input-text>
+        ></t-input-text>
       </div>
       <div class="t-sign-up-form__checkbox">
-        <t-checkbox v-model="agreeWithTerms" name="terms" >
-          I accept <a class="primary--text t-link">terms</a> and <a class="primary--text t-link">conditions</a>
+        <t-checkbox v-model="agreeWithTerms" name="terms">
+          I accept
+          <a class="primary--text t-link" @click="openTerms = true">terms and conditions</a>
         </t-checkbox>
       </div>
       <div class="t-sign-up-form__button">
-        <t-btn :loading="isSigningUp">
-          Sign up
-        </t-btn>
+        <t-btn :loading="isSigningUp">Sign up</t-btn>
       </div>
       <div class="text-center">
-        <router-link :to="{ name: 'Login' }" class="t-link">
-          Already have an account?
-        </router-link>
+        <router-link :to="{ name: 'Login' }" class="t-link">Already have an account?</router-link>
       </div>
     </form>
+    <ModalTerms v-model="openTerms"></ModalTerms>
   </t-card>
 </template>
 
@@ -72,14 +69,20 @@ import { validateEmail } from "../helpers/validateEmail.js";
 import { validatePassword } from "../helpers/validatePassword.js";
 import { authentication, signUp } from "../service/auth.js";
 import getColor from "../helpers/getColor.js";
-import Toastify from 'toastify-js'
+import Toastify from "toastify-js";
+import ModalTerms from "../components/ModalTerms.vue";
 
 export default {
   name: "Signup",
-  data () {
+  components: {
+    ModalTerms,
+    // BUG: ModalTerms: () => import('../components/ModalTerms.vue')
+  },
+  data() {
     return {
-      agreeWithTerms: false
-    }
+      openTerms: false,
+      agreeWithTerms: false,
+    };
   },
   methods: {
     async signUp() {
@@ -92,32 +95,32 @@ export default {
         await signUp({
           name: this.name,
           username: this.username,
-          password: this.password
-        })
+          password: this.password,
+        });
         Toastify({
-          text: 'Account created',
+          text: "Account created",
           duration: 3000,
           gravity: "top",
           position: "right",
-          backgroundColor: getColor('sucess')
+          backgroundColor: getColor("sucess"),
         }).showToast();
         await authentication({
           username: this.username,
-          password: this.password
-        })
-        this.$router.push({ name: 'Dashboard' })
+          password: this.password,
+        });
+        this.$router.push({ name: "Dashboard" });
       } catch (error) {
         Toastify({
           text: error.message,
           duration: 3000,
           gravity: "top",
           position: "right",
-          backgroundColor: getColor('error')
+          backgroundColor: getColor("error"),
         }).showToast();
       } finally {
         this.toggleSignup();
       }
-    }
+    },
   },
   setup() {
     const { isLoading: isSigningUp, toggleLoading: toggleSignup } = useLoading(
