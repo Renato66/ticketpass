@@ -5,7 +5,8 @@
     "dev": "vite",
     "build": "vite build",
     "cy:run": "cypress open",
-    "test:e2e": "start-test dev 3000 cy:run"
+    "test:e2e": "start-test dev 3000 cy:run",
+    "test:unit": "yarn jest"
   },
   "dependencies": {
     "toastify-js": "^1.9.0",
@@ -13,11 +14,16 @@
     "vue-router": "4.0.0-beta.4"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.11.0",
     "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "@vue/test-utils": "^2.0.0-beta.1",
+    "babel-jest": "^26.2.2",
     "cypress": "^4.12.0",
     "cypress-localstorage-commands": "^1.2.1",
+    "jest": "^26.2.2",
     "sass": "^1.26.10",
     "start-server-and-test": "^1.11.2",
-    "vite": "^1.0.0-rc.1"
+    "vite": "^1.0.0-rc.1",
+    "vue-jest": "^5.0.0-alpha.2"
   }
 }
