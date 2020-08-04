@@ -31,6 +31,24 @@ You can look at [localhost:3000](http://localhost:3000) to see the app
 yarn dev
 ```
 
+## Tests
+
+### Running e2e tests
+
+The tests are made with [cypress](https://www.cypress.io/)
+
+```
+yarn test:e2e
+```
+
+### Running unit tests
+
+The tests are made with [jest](https://jestjs.io)
+
+```
+yarn test:unit
+```
+
 ## Build
 
 ### Compiles and minifies for production
