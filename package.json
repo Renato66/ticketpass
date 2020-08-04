@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "cy:run": "cypress open",
+    "test:e2e": "start-test dev 3000 cy:run"
   },
   "dependencies": {
     "toastify-js": "^1.9.0",
@@ -12,7 +14,10 @@
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "cypress": "^4.12.0",
+    "cypress-localstorage-commands": "^1.2.1",
     "sass": "^1.26.10",
+    "start-server-and-test": "^1.11.2",
     "vite": "^1.0.0-rc.1"
   }
 }
