@@ -1,6 +1,8 @@
 {
   "name": "ticketpass2",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "private": false,
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -21,11 +23,23 @@
     "babel-jest": "^26.2.2",
     "cypress": "^4.12.0",
     "cypress-localstorage-commands": "^1.2.1",
+    "husky": "^4.2.5",
     "jest": "^26.2.2",
+    "lint-staged": "^10.2.11",
     "prettier": "2.0.5",
     "sass": "^1.26.10",
     "start-server-and-test": "^1.11.2",
     "vite": "^1.0.0-rc.1",
     "vue-jest": "^5.0.0-alpha.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": [
+      "prettier --write"
+    ]
   }
 }
