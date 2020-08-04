@@ -1,10 +1,12 @@
 <p align="center">
-  <a href="https://waitress.netlify.app">
-    <img src="https://ticketpass-test.netlify.app/icons/apple-touch-icon.png">
+  <a href="https://ticketpass-test.netlify.app">
+    <img src="./public/img/icons/logo.png" width="200">
   </a>
 </p>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3f32b5f0-8381-4d33-a4f1-7843ad0f051b/deploy-status)](https://app.netlify.com/sites/ticketpass-test/deploys)
+![Unit test](https://github.com/Renato66/ticketpass/workflows/Unit%20test/badge.svg)
+![E2e test](https://github.com/Renato66/ticketpass/workflows/E2e%20test/badge.svg)
 
 # Tickectpass test
 
