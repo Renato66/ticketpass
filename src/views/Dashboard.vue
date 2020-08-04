@@ -10,22 +10,22 @@
 </template>
 
 <script>
-import { logout, getUser } from "../service/auth.js";
+import {logout, getUser} from '../service/auth.js'
 
 export default {
   name: 'Dashboard',
-  data () {
+  data() {
     return {
       firsName: ''
     }
   },
   methods: {
-    logoutUser () {
-      this.$router.push({ name: 'Login' })
+    logoutUser() {
+      this.$router.push({name: 'Login'})
       logout()
     }
   },
-  mounted () {
+  mounted() {
     const user = getUser()
     if (user) {
       this.firsName = user.name.split(' ')[0]

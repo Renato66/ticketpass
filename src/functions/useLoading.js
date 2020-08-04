@@ -1,5 +1,4 @@
-import { ref } from 'vue'
-
+import {ref} from 'vue'
 
 export function useLoading(loading) {
   const isLoading = ref(loading || false)
@@ -10,6 +9,6 @@ export function useLoading(loading) {
 
   return {
     isLoading,
-    toggleLoading,
+    toggleLoading
   }
 }

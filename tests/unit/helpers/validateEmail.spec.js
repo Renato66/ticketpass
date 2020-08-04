@@ -1,4 +1,4 @@
-import { validateEmail } from '../../../src/helpers/validateEmail.js'
+import {validateEmail} from '../../../src/helpers/validateEmail.js'
 
 describe('Test validateEmail function', () => {
   it('should not return errors', async () => {
@@ -13,7 +13,7 @@ describe('Test validateEmail function', () => {
     expect(validateEmail('test@emailcom')).toStrictEqual(['Missing "." char'])
   })
 
-  it('should return \'Empty field\' error', async () => {
+  it("should return 'Empty field' error", async () => {
     expect(validateEmail('')).toStrictEqual(['Empty field'])
   })
 })

@@ -1,6 +1,11 @@
 // https://loading.io/css/
 <template>
-  <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  <div class="lds-ellipsis">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </template>
 
 <style>
@@ -59,5 +64,4 @@
     transform: translate(12px, 0);
   }
 }
-
 </style>

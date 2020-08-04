@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
-import { router } from './router'
+import {createApp} from 'vue'
+import {router} from './router'
 import App from './App.vue'
 import registerComponents from './plugins/core-components.js'
 import importCss from './plugins/importCss.js'

@@ -13,7 +13,7 @@
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
       v-bind="$attrs"
-    >
+    />
     <div class="t-helper" v-if="erros.length > 0">
       ?
       <ul class="t-helper__message">
@@ -59,11 +59,11 @@ export default {
     font-weight: 500;
     font-size: 1.1em;
     border: 1px solid #b6b7b3;
-    &:focus{
+    &:focus {
       outline: none;
-      border-color: var(--color-primary)
+      border-color: var(--color-primary);
     }
-    &[type="password"] {
+    &[type='password'] {
       color: #636161;
       letter-spacing: 6px;
     }
@@ -87,7 +87,7 @@ export default {
   text-align: center;
   color: #7b7b7b;
   cursor: help;
-  &__message{
+  &__message {
     display: none;
     position: absolute;
     left: -150px;
@@ -101,7 +101,7 @@ export default {
     margin-top: 6px;
     font-size: 14px;
     :hover > & {
-      display: block
+      display: block;
     }
   }
 }

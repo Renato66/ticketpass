@@ -8,7 +8,7 @@
       :name="name"
       v-bind="$attrs"
       @change="$emit('update:modelValue', $event.target.checked)"
-    >
+    />
     <label for="vehicle1">
       <slot />
     </label>
@@ -37,7 +37,7 @@ export default {
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
-    appearance:none;
+    appearance: none;
     display: inline-block;
     height: 14px;
     width: 14px;
@@ -50,11 +50,11 @@ export default {
     cursor: pointer;
     &:checked {
       background: var(--color-primary);
-      border-color: var(--color-primary)!important;
+      border-color: var(--color-primary) !important;
       &::before {
         display: block;
         position: relative;
-        content: " ";
+        content: ' ';
         left: 4px;
         top: 1px;
         width: 3px;

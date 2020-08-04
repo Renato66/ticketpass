@@ -1,10 +1,6 @@
-import { ref, computed } from 'vue'
+import {ref, computed} from 'vue'
 
-export function useValidator({
-  input,
-  erros,
-  validator
-}) {
+export function useValidator({input, erros, validator}) {
   const state = {
     input: ref(input || ''),
     erros: ref(erros || [])
@@ -12,12 +8,12 @@ export function useValidator({
 
   const isValid = computed(() => state.erros.value.length === 0)
 
-  function validateErros () {
+  function validateErros() {
     state.erros.value = validator(state.input.value)
     return isValid.value
   }
 
-  function clearErros () {
+  function clearErros() {
     state.erros.value = []
   }
 

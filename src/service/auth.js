@@ -5,11 +5,13 @@ export const authentication = async ({username, password}) => {
   const users = JSON.parse(localStorage.getItem('users')) || []
   const user = users.find(elem => elem.username === username)
   if (!user) throw new Error('No user found')
-  if (user.password !== password)  throw new Error('Wrong password')
-  
-  const token = Math.random().toString(36).substr(2, 9);
+  if (user.password !== password) throw new Error('Wrong password')
+
+  const token = Math.random().toString(36).substr(2, 9)
   localStorage.setItem('auth_token', token)
-  localStorage.setItem('user', JSON.stringify({
+  localStorage.setItem(
+    'user',
+    JSON.stringify({
       id: user.id,
       name: user.name
     })
@@ -18,9 +20,9 @@ export const authentication = async ({username, password}) => {
 export const signUp = async ({name, username, password}) => {
   await new Promise(resolve => setTimeout(resolve, 1000))
   // TODO: call an API to verify username and password
-  // TODO: validate all fields in backend 
+  // TODO: validate all fields in backend
   // WARN: demo purpose only
-  const id = Math.random().toString(36).substr(2, 9);
+  const id = Math.random().toString(36).substr(2, 9)
   const users = JSON.parse(localStorage.getItem('users')) || []
   const user = users.find(elem => elem.username === username)
   if (user) throw new Error('Email already registered')
@@ -48,7 +50,7 @@ export const logout = () => {
   localStorage.removeItem('user')
 }
 
-export const forgotPassword = async (username) => {
+export const forgotPassword = async username => {
   await new Promise(resolve => setTimeout(resolve, 1000))
   // TODO: call an API to verify email
   // WARN: demo purpose only

@@ -42,77 +42,79 @@
         </t-btn>
       </div>
       <div class="text-center">
-        <router-link :to="{ name: 'SignUp' }" class="t-link">Create an account</router-link>
+        <router-link :to="{name: 'SignUp'}" class="t-link"
+          >Create an account</router-link
+        >
       </div>
     </form>
   </t-card>
 </template>
 
 <script>
-import { useLoading } from "../functions/useLoading.js";
-import { useValidator } from "../functions/useValidator.js";
-import { validateEmail } from "../helpers/validateEmail.js";
-import { validatePassword } from "../helpers/validatePassword.js";
-import { authentication } from "../service/auth.js";
-import getColor from "../helpers/getColor.js";
+import {useLoading} from '../functions/useLoading.js'
+import {useValidator} from '../functions/useValidator.js'
+import {validateEmail} from '../helpers/validateEmail.js'
+import {validatePassword} from '../helpers/validatePassword.js'
+import {authentication} from '../service/auth.js'
+import getColor from '../helpers/getColor.js'
 import Toastify from 'toastify-js'
 import ModalForgotPassword from '../components/ModalForgotPassword.vue'
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
     ModalForgotPassword
   },
   methods: {
     async login() {
-      if (this.isLoginIn) return;
-      if (!this.usernameValidateErros()) return;
-      if (!this.passwordValidateErros()) return;
+      if (this.isLoginIn) return
+      if (!this.usernameValidateErros()) return
+      if (!this.passwordValidateErros()) return
       try {
-        this.toggleLoginIn();
+        this.toggleLoginIn()
         await authentication({
           username: this.username,
           password: this.password
         })
-        this.$router.push({ name: 'Dashboard' })
+        this.$router.push({name: 'Dashboard'})
       } catch (error) {
         Toastify({
           text: error.message,
           duration: 3000,
-          gravity: "top",
-          position: "right",
+          gravity: 'top',
+          position: 'right',
           backgroundColor: getColor('error')
-        }).showToast();
+        }).showToast()
       } finally {
-        this.toggleLoginIn();
+        this.toggleLoginIn()
       }
     }
   },
   setup() {
-    const { isLoading: isLoginIn, toggleLoading: toggleLoginIn } = useLoading(
+    const {isLoading: isLoginIn, toggleLoading: toggleLoginIn} = useLoading(
       false
-    );
+    )
 
     const {
       input: username,
       erros: usernameErros,
       isValid: usernameIsValid,
       clearErros: usernameClearErros,
-      validateErros: usernameValidateErros,
+      validateErros: usernameValidateErros
     } = useValidator({
-      input: "",
-      validator: validateEmail,
-    });
+      input: '',
+      validator: validateEmail
+    })
     const {
       input: password,
       erros: passwordErros,
       isValid: passwordIsValid,
       clearErros: passwordClearErros,
-      validateErros: passwordValidateErros,
+      validateErros: passwordValidateErros
     } = useValidator({
-      input: "",
-      validator: validatePassword,
-    });
+      input: '',
+      validator: validatePassword
+    })
 
     return {
       username,
@@ -126,10 +128,10 @@ export default {
       passwordClearErros,
       passwordValidateErros,
       isLoginIn,
-      toggleLoginIn,
-    };
-  },
-};
+      toggleLoginIn
+    }
+  }
+}
 </script>
 
 <style lang="scss">

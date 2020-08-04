@@ -1,8 +1,8 @@
 <template>
   <main class="aligner">
-    <router-view v-slot="{ Component }">
-      <transition  name="slide-left" mode="out-in">
-        <component :is="Component"  />
+    <router-view v-slot="{Component}">
+      <transition name="slide-left" mode="out-in">
+        <component :is="Component" />
       </transition>
     </router-view>
   </main>
@@ -25,9 +25,9 @@ main {
   text-decoration: none;
   color: #737373;
   &:focus,
-  &:hover{
+  &:hover {
     outline: none;
-    color: var(--color-primary)
+    color: var(--color-primary);
   }
 }
 </style>

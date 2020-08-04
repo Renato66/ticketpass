@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 .primary--text {
-  color: var(--color-primary)
+  color: var(--color-primary);
 }
 .aligner {
   display: flex;

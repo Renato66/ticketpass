@@ -14,7 +14,9 @@ The site is live at [https://ticketpass-test.netlify.app](https://ticketpass-tes
 # How to
 
 ## Install dependencies
+
 Yarn knowledge is required for running this project [getting started with yarn](https://yarnpkg.com/getting-started)
+
 ```
 yarn install
 ```
@@ -22,7 +24,9 @@ yarn install
 ## Run
 
 ### Compiles and hot-reloads for development
+
 You can look at [localhost:3000](http://localhost:3000) to see the app
+
 ```
 yarn dev
 ```
@@ -30,7 +34,9 @@ yarn dev
 ## Build
 
 ### Compiles and minifies for production
+
 A folder will be created in root path named `dist`
+
 ```
 yarn build
 ```

@@ -2,8 +2,11 @@
   <teleport to="body">
     <transition name="fade" mode="out-in">
       <div class="t-modal" v-show="modelValue">
-        <div class="t-modal__backdrop" @click="$emit('update:modelValue', false)"></div>
-        <transition name="slide-left" >
+        <div
+          class="t-modal__backdrop"
+          @click="$emit('update:modelValue', false)"
+        ></div>
+        <transition name="slide-left">
           <div class="t-modal__content">
             <slot />
           </div>
@@ -36,7 +39,7 @@ export default {
   display: grid;
   place-items: center;
   overflow: auto;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
   &__backdrop {
     position: fixed;
     top: 0;

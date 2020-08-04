@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import { getUser } from './service/auth.js'
-const Dashboard= () => import('./views/Dashboard.vue')
+import {createRouter, createWebHistory} from 'vue-router'
+import {getUser} from './service/auth.js'
+const Dashboard = () => import('./views/Dashboard.vue')
 const Login = () => import('./views/Login.vue')
 const SignUp = () => import('./views/SignUp.vue')
 const NotFound = () => import('./views/NotFound.vue')
@@ -9,7 +9,7 @@ export const router = createRouter({
   history: createWebHistory(),
   strict: true,
   routes: [
-    { path: '/', redirect: '/login' },
+    {path: '/', redirect: '/login'},
     {
       path: '/login',
       component: Login,
@@ -18,7 +18,7 @@ export const router = createRouter({
     {
       path: '/dashboard',
       component: Dashboard,
-      meta: { requiresAuth: true },
+      meta: {requiresAuth: true},
       name: 'Dashboard'
     },
     {
@@ -26,7 +26,7 @@ export const router = createRouter({
       component: SignUp,
       name: 'SignUp'
     },
-    { 
+    {
       path: '/:data(.*)',
       component: NotFound,
       name: 'NotFound'
@@ -40,9 +40,7 @@ router.beforeEach((to, from, next) => {
   } else {
     if (to.matched.some(record => record.meta.requiresAuth)) {
       const user = getUser()
-      user === null
-        ? next({ name: 'Login' })
-        : next()
+      user === null ? next({name: 'Login'}) : next()
     } else {
       next()
     }

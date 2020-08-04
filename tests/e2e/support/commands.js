@@ -1,6 +1,6 @@
 Cypress.Commands.add(
   'login',
-  (username, password, appState = { targetUrl: '/' }) => {
+  (username, password, appState = {targetUrl: '/'}) => {
     // cy.log(`Logging in as ${username || 'default user'}`)
     // const options = {
     //   method: 'POST',
@@ -18,9 +18,7 @@ Cypress.Commands.add(
     // cy.request(options).then(({ body }) => {
     //   /* eslint camelcase: ["error", {"properties": "never", ignoreDestructuring: true}] */
     //   const { access_token, expires_in, id_token } = body
-
     //   cy.server()
-
     //   // intercept Auth0 request for token and return what we have
     //   cy.route({
     //     url: 'oauth/token',
@@ -33,7 +31,6 @@ Cypress.Commands.add(
     //       token_type: 'Bearer'
     //     }
     //   })
-
     //   // Auth0 SPA SDK will check for value in cookie to get appState
     //   // and validate nonce (which has been removed for simplicity)
     //   const stateId = 'test'

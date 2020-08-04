@@ -1,7 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('Login', () => {
-
   it('should see a login button', () => {
     cy.visit(`http://localhost:3000/login`)
     cy.get('form#login button.t-button').should('contain', 'Login')
@@ -30,15 +29,19 @@ describe('Login', () => {
   it('should login', () => {
     // seed a user in the DB that we can control from our tests
     const users = [
-      {id: "0py6us42m", name: "Renato Vicente", username: "revi66@hotmail.com", password: "123qwe"}
+      {
+        id: '0py6us42m',
+        name: 'Renato Vicente',
+        username: 'revi66@hotmail.com',
+        password: '123qwe'
+      }
     ]
-    cy.setLocalStorage("users", JSON.stringify(users))
+    cy.setLocalStorage('users', JSON.stringify(users))
     cy.visit(`http://localhost:3000/login`)
     cy.get('input[name=username]').type(users[0].username)
     cy.get('input[name=password]').type(`${users[0].password}{enter}`)
-    cy.location().should((loc) => {
+    cy.location().should(loc => {
       expect(loc.pathname).to.eq('/dashboard')
     })
   })
-  
 })

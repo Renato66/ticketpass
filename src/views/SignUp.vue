@@ -47,14 +47,18 @@
       <div class="t-sign-up-form__checkbox">
         <t-checkbox v-model="agreeWithTerms" name="terms">
           I accept
-          <a class="primary--text t-link" @click="openTerms = true">terms and conditions</a>
+          <a class="primary--text t-link" @click="openTerms = true"
+            >terms and conditions</a
+          >
         </t-checkbox>
       </div>
       <div class="t-sign-up-form__button">
         <t-btn :loading="isSigningUp">Sign up</t-btn>
       </div>
       <div class="text-center">
-        <router-link :to="{ name: 'Login' }" class="t-link">Already have an account?</router-link>
+        <router-link :to="{name: 'Login'}" class="t-link"
+          >Already have an account?</router-link
+        >
       </div>
     </form>
     <ModalTerms v-model="openTerms"></ModalTerms>
@@ -62,101 +66,101 @@
 </template>
 
 <script>
-import { useLoading } from "../functions/useLoading.js";
-import { useValidator } from "../functions/useValidator.js";
-import { validateName } from "../helpers/validateName.js";
-import { validateEmail } from "../helpers/validateEmail.js";
-import { validatePassword } from "../helpers/validatePassword.js";
-import { authentication, signUp } from "../service/auth.js";
-import getColor from "../helpers/getColor.js";
-import Toastify from "toastify-js";
-import ModalTerms from "../components/ModalTerms.vue";
+import {useLoading} from '../functions/useLoading.js'
+import {useValidator} from '../functions/useValidator.js'
+import {validateName} from '../helpers/validateName.js'
+import {validateEmail} from '../helpers/validateEmail.js'
+import {validatePassword} from '../helpers/validatePassword.js'
+import {authentication, signUp} from '../service/auth.js'
+import getColor from '../helpers/getColor.js'
+import Toastify from 'toastify-js'
+import ModalTerms from '../components/ModalTerms.vue'
 
 export default {
-  name: "Signup",
+  name: 'Signup',
   components: {
-    ModalTerms,
+    ModalTerms
     // BUG: ModalTerms: () => import('../components/ModalTerms.vue')
   },
   data() {
     return {
       openTerms: false,
-      agreeWithTerms: false,
-    };
+      agreeWithTerms: false
+    }
   },
   methods: {
     async signUp() {
-      if (this.isSigningUp) return;
-      if (!this.nameValidateErros()) return;
-      if (!this.usernameValidateErros()) return;
-      if (!this.passwordValidateErros()) return;
+      if (this.isSigningUp) return
+      if (!this.nameValidateErros()) return
+      if (!this.usernameValidateErros()) return
+      if (!this.passwordValidateErros()) return
       try {
-        this.toggleSignup();
+        this.toggleSignup()
         await signUp({
           name: this.name,
           username: this.username,
-          password: this.password,
-        });
+          password: this.password
+        })
         Toastify({
-          text: "Account created",
+          text: 'Account created',
           duration: 3000,
-          gravity: "top",
-          position: "right",
-          backgroundColor: getColor("sucess"),
-        }).showToast();
+          gravity: 'top',
+          position: 'right',
+          backgroundColor: getColor('sucess')
+        }).showToast()
         await authentication({
           username: this.username,
-          password: this.password,
-        });
-        this.$router.push({ name: "Dashboard" });
+          password: this.password
+        })
+        this.$router.push({name: 'Dashboard'})
       } catch (error) {
         Toastify({
           text: error.message,
           duration: 3000,
-          gravity: "top",
-          position: "right",
-          backgroundColor: getColor("error"),
-        }).showToast();
+          gravity: 'top',
+          position: 'right',
+          backgroundColor: getColor('error')
+        }).showToast()
       } finally {
-        this.toggleSignup();
+        this.toggleSignup()
       }
-    },
+    }
   },
   setup() {
-    const { isLoading: isSigningUp, toggleLoading: toggleSignup } = useLoading(
+    const {isLoading: isSigningUp, toggleLoading: toggleSignup} = useLoading(
       false
-    );
+    )
 
     const {
       input: name,
       erros: nameErros,
       isValid: nameIsValid,
       clearErros: nameClearErros,
-      validateErros: nameValidateErros,
+      validateErros: nameValidateErros
     } = useValidator({
-      input: "",
-      validator: validateName,
-    });
+      input: '',
+      validator: validateName
+    })
     const {
       input: username,
       erros: usernameErros,
       isValid: usernameIsValid,
       clearErros: usernameClearErros,
-      validateErros: usernameValidateErros,
+      validateErros: usernameValidateErros
     } = useValidator({
-      input: "",
-      validator: validateEmail,
-    });
+      input: '',
+      validator: validateEmail
+    })
     const {
       input: password,
       erros: passwordErros,
       isValid: passwordIsValid,
       clearErros: passwordClearErros,
-      validateErros: passwordValidateErros,
+      validateErros: passwordValidateErros
     } = useValidator({
-      input: "",
-      validator: validatePassword,
-    });
+      input: '',
+      validator: validatePassword
+    })
 
     return {
       name,
@@ -175,10 +179,10 @@ export default {
       passwordClearErros,
       passwordValidateErros,
       isSigningUp,
-      toggleSignup,
-    };
-  },
-};
+      toggleSignup
+    }
+  }
+}
 </script>
 
 <style lang="scss">
